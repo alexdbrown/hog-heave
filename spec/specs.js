@@ -46,10 +46,37 @@ describe('Turn.pass()', function() {
 });
 
 describe('Game', function() {
-it("creates a new active game", function() {
-  var testPlayer1 = new Player("Porker Posey");
-  var testPlayer2 = new Player("Mrs. Piggy");
-  var testGame = new Game(testPlayer1, testPlayer2);
-  expect(testGame.active).to.equal(true);
+  it("creates a new active game", function() {
+    var testPlayer1 = new Player("Porker Posey");
+    var testPlayer2 = new Player("Mrs. Piggy");
+    var testGame = new Game(testPlayer1, testPlayer2);
+    expect(testGame.active).to.equal(true);
+    });
 });
+
+describe('Game.run()', function() {
+  it("ends the game if a player has won", function() {
+    var testPlayer1 = new Player("Porker Posey");
+    var testPlayer2 = new Player("Mrs. Piggy");
+    var testGame = new Game(testPlayer1, testPlayer2);
+
+    // Hard-code a Mrs. Piggy win
+    testPlayer2.totalScore = 100;
+
+    testGame.run();
+    expect(testGame.active).to.equal(false);
+  });
 });
+
+// describe('Game.nextTurn()', function() {
+//   it("runs a turn and switches the current player", function() {
+//     var testPlayer1 = new Player("Porker Posey");
+//     var testPlayer2 = new Player("Mrs. Piggy");
+//     var testGame = new Game(testPlayer1, testPlayer2);
+//
+//     testGame.nextTurn();
+//
+//
+//
+//   });
+// });

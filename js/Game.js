@@ -4,7 +4,7 @@ function Game(player1, player2) {
   this.player2 = player2;
 
   // Player 1 always goes first, for now
-  this.currentPlayer = player1;
+  this.currentPlayer = this.player1;
 
   // Game starts out active until a player wins
   this.active = true;
@@ -15,34 +15,28 @@ function Game(player1, player2) {
 Game.prototype.run = function() {
   // While the game is running, keep generating new turns
   while (this.active === true) {
-    if (this.player1.totalScore === 100) {
-      // player 1 wins
+    if (this.player1.totalScore >= 100) {
+      // player 1 wins, return that player so we can get access to him/her
       this.active = false;
-    } else if (this.player2.totalScore === 100) {
+      return this.player1;
+    } else if (this.player2.totalScore >= 100) {
       // player 2 hooray
       this.active = false;
+      return this.player2;
     } else {
       this.nextTurn();
     }
   }
 }
 
+// Just get the next turn and return the turn.
+Game.prototype.getNextTurn = function() {
+  return this.currentPlayer.takeTurn();
+}
+
+Game.prototype.switchPlayer = function() {
+  this.currentPlayer = (this.currentPlayer != this.player1) ? this.player1 : this.player2;
+}
 
 
-
-/* Decide who's turn is next
-** and create a new turn for that player.
-** Or, if a player has already won, don't
-** make any new turns. */
-Game.prototype.nextTurn = function() {
-    // Create a new turn for the current player
-    var newTurn = this.currentPlayer.takeTurn();
-
-    // Wait for the new turn to finish
-    while (newTurn.completed === false) {
-      continue;
-    }
-
-    // The turn has finished. Switch currentPlayer to the other player.
-    this.currentPlayer = (curentPlayer != player1) ? player1 : player2;
-};
+debugger;
