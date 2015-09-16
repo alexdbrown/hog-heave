@@ -10,12 +10,8 @@ function Game(player1, player2) {
   this.active = true;
 };
 
-
-/* Run the game. */
-Game.prototype.run = function() {
-  // While the game is running, keep generating new turns
-  while (this.active === true) {
-    if (this.player1.totalScore >= 100) {
+Game.prototype.checkStatus = function() {
+  if (this.player1.totalScore >= 100) {
       // player 1 wins, return that player so we can get access to him/her
       this.active = false;
       return this.player1;
@@ -24,9 +20,8 @@ Game.prototype.run = function() {
       this.active = false;
       return this.player2;
     } else {
-      this.nextTurn();
+      return true;
     }
-  }
 }
 
 // Just get the next turn and return the turn.
