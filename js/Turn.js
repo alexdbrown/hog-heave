@@ -16,6 +16,7 @@ Turn.prototype.roll = function() {
   } else {
     this.currentScore += newRoll;
   }
+  return newRoll;
 };
 
 // Add the score for this turn to its associated player and end this turn.

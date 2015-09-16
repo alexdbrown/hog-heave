@@ -19,11 +19,18 @@ describe('Turn', function() {
 });
 
 describe('Turn.roll()', function() {
-  it("it produces a random number between 1 and 6 and adds it to the currentScore", function() {
+  it("it produces a random number between 1 and 6 and either adds it to the currentScore or rolls in the mud", function() {
     var testPlayer = new Player("Porker Posey");
     var testTurn = new Turn(testPlayer);
-    testTurn.roll();
-    expect(testTurn.currentScore).to.be.within(1,6);
+    var newRoll = testTurn.roll();
+
+    // If the roll was not a 1, the current score should be 0 + this roll.
+    // If the roll was a 1, the current score should be 0 + 0 = 0.
+    if (newRoll !== 1) {
+      expect(testTurn.currentScore).to.be.within(2,6);
+    } else {
+      expect(testTurn.currentScore).to.equal(0);
+    }
   });
 });
 
@@ -36,4 +43,13 @@ describe('Turn.pass()', function() {
     testTurn.pass();
     expect(testPlayer.totalScore).to.equal(scoreAfterRoll);
   });
+});
+
+describe('Game', function() {
+it("creates a new active game", function() {
+  var testPlayer1 = new Player("Porker Posey");
+  var testPlayer2 = new Player("Mrs. Piggy");
+  var testGame = new Game(testPlayer1, testPlayer2);
+  expect(testGame.active).to.equal(true);
+});
 });
