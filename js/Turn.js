@@ -7,7 +7,15 @@ function Turn(player) {
 // Roll a random number and add it to this turn's current score
 Turn.prototype.roll = function() {
   var newRoll = Math.floor(Math.random() * 6) + 1;
-  this.currentScore += newRoll;
+
+  // If player rolls in the mud, clear current score for this turn and end the turn.
+  // Otherwise, add the new roll to the current score for this turn.
+  if (newRoll === 1) {
+    this.currentScore = 0;
+    this.completed = true;
+  } else {
+    this.currentScore += newRoll;
+  }
 };
 
 // Add the score for this turn to its associated player and end this turn.
