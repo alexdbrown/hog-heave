@@ -1,7 +1,8 @@
 describe('Player', function() {
-  it("creates a player with the given name", function() {
+  it("creates a player with the given name and an initial score of 0", function() {
     var testPlayer = new Player("Mrs. Piggy");
-    expect(testPlayer.playerName()).to.equal("Mrs. Piggy");
+    expect(testPlayer.playerName).to.equal("Mrs. Piggy");
+    expect(testPlayer.totalScore).to.equal(0);
   });
 
   // current turn
@@ -13,7 +14,7 @@ describe('Turn', function() {
   it("creates a new turn with a default score of zero", function() {
     var testPlayer = new Player("Porker Posey");
     var testTurn = new Turn(testPlayer);
-    expect(testTurn.currentScore()).to.equal(0);
+    expect(testTurn.currentScore).to.equal(0);
   });
 });
 
@@ -22,7 +23,7 @@ describe('Turn.roll()', function() {
     var testPlayer = new Player("Porker Posey");
     var testTurn = new Turn(testPlayer);
     testTurn.roll();
-    expect(testTurn.currentScore()).to.be.within(1,6);
+    expect(testTurn.currentScore).to.be.within(1,6);
   });
 });
 
