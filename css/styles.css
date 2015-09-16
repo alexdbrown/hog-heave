@@ -12,10 +12,14 @@ h3 {
 }*/
 
 
-.roll-btn {
+#roll-btn {
 
 }
 
-.pass-btn {
-  
+#pass-btn {
+
+}
+
+.highlighted {
+  background-color: pink;
 }

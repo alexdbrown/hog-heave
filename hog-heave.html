@@ -60,26 +60,30 @@
           <!-- game here -->
           <div class="well">
             <div class="row">
-              <div class="col-md-3">
-                Player 1: {score}
+              <div class="col-md-3" id="player1">
+                Player 1: <span id="player1-score"></span>
               </div>
-              <div class="col-md-3 col-md-offset-6 text-right">
-                Player 2: {score}
+              <div class="col-md-3 col-md-offset-6 text-right" id="player2">
+                Player 2: <span id="player2-score"></span>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6 col-md-offset-3 text-center">
-                Current Score: {currentScore}
+                Current Score: <span id="current-score"></span>
+                <p id="roll"></p>
               </div>
             </div>
             <div class="row">
               <div class="dice">
                 <h3>Big Dice Image Here</h3>
               </div>
+              <div id="result">
+                <!-- will display winner name? -->
+              </div>
             </div>
             <div class="row">
-              <button class="col-md-3 col-md-offset-2 btn roll-btn">Roll</button>
-              <button class="col-md-3 col-md-offset-2 btn pass-btn">Pass</button>
+              <button class="col-md-3 col-md-offset-2 btn" id="roll-btn">Roll</button>
+              <button class="col-md-3 col-md-offset-2 btn" id="pass-btn">Pass</button>
             </div>
           </div>
         </div>

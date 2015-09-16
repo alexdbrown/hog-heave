@@ -34,4 +34,4 @@ Game.prototype.switchPlayer = function() {
 }
 
 
-debugger;
+// debugger;
