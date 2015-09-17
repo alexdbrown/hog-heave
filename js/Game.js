@@ -10,12 +10,14 @@ function Game(player1, player2) {
   this.active = true;
 };
 
+
+// CHANGE THESE BACK TO 100!!!!!!
 Game.prototype.checkStatus = function() {
-  if (this.player1.totalScore >= 100) {
+  if (this.player1.totalScore >= 10) {
       // player 1 wins, return that player so we can get access to him/her
       this.active = false;
       return this.player1;
-    } else if (this.player2.totalScore >= 100) {
+    } else if (this.player2.totalScore >= 10) {
       // player 2 hooray
       this.active = false;
       return this.player2;

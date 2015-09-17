@@ -64,9 +64,15 @@ $(document).ready(function() {
   var showCurrentPlayer = function() {
     if (game.currentPlayer === player1) {
       $("#player2").removeClass("animated bounce highlighted");
+      $("#player2").addClass("not-playing").hide().fadeIn();
+
+      $("#player1").removeClass("not-playing");
       $("#player1").addClass("animated bounce highlighted");
     } else {
       $("#player1").removeClass("animated bounce highlighted");
+      $("#player1").addClass("not-playing").hide().fadeIn();
+
+      $("#player2").removeClass("not-playing");
       $("#player2").addClass("animated bounce highlighted");
     }
   };
@@ -79,14 +85,29 @@ $(document).ready(function() {
 
   var checkStatus = function() {
     if (game.checkStatus() === player1) {
-      $("#result").text(player1.playerName + " wins!");
+
+      $(".container").last().fadeOut("slow");
+      $(".container").empty();
+      $(".container").append("<h1 class='text-center bacon-text animated shake swing infinite'>" + player1.playerName + " wins!</h1>");
+      $(".container").append("<img src='img/bacon-dance.gif' class='img-responsive center-block animated infinite rubberBand'>");
+      $(".container").append("<div class='row' id='restart'><h3 class='dropshadow marquee col-xs-10 col-xs-offset-1' role='button' id='restart-btn'>re-start!</h3></div>");
+      $("#restart-btn").click(function(event) {
+        location.reload();
+      });
 
       // Hide buttons if someone has won
       $("#roll-btn").hide();
       $("#pass-btn").hide();
 
     } else if (game.checkStatus() === player2) {
-      $("#result").text(player2.playerName + " wins!");
+      $(".container").last().fadeOut("slow");
+      $(".container").empty();
+      $(".container").append("<h1 class='text-center bacon-text animated shake swing infinite'>" + player2.playerName + " wins</h1>");
+      $(".container").append("<img src='img/bacon-dance.gif' class='img-responsive center-block animated infinite rubberBand'>");
+      $(".container").append("<div class='row' id='restart'><h3 class='dropshadow marquee col-xs-10 col-xs-offset-1' role='button' id='restart-btn'>re-start!</h3></div>");
+      $("#restart-btn").click(function(event) {
+        location.reload();
+      });
 
       // Hide buttons if someone has won
       $("#roll-btn").hide();
@@ -120,8 +141,6 @@ $(document).ready(function() {
       $("#dice").append("<img class='center-block img-responsive dice-img animated flip' src='img/dice/" + diceNumber + ".svg'>");
     }
   }
-
-
 
   // Roll button onClick handler
   $("#roll-btn").click(function(event) {

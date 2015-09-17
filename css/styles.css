@@ -47,6 +47,8 @@ body {
   height: 150px;
 }
 
+
+
 #current-score {
   text-shadow: 2px 2px 2px #ffffff;
 }
@@ -60,10 +62,17 @@ body {
   outline: 0 none;
 }
 
-
+.bacon-text {
+  text-shadow: 2px 2px 2px #ffffff;
+}
 
 .highlighted {
   background-color: pink;
+}
+
+.not-playing {
+  background-color: #E3E3E3;
+  opacity: 0.6;
 }
 
 #dice {
