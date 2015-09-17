@@ -86,28 +86,23 @@ $(document).ready(function() {
   var checkStatus = function() {
     if (game.checkStatus() === player1) {
 
-      $(".container").last().fadeOut("slow");
-      $(".container").empty();
-      $(".container").append("<h1 class='text-center bacon-text animated shake swing infinite'>" + player1.playerName + " wins!</h1>");
-      $(".container").append("<img src='img/bacon-dance.gif' class='img-responsive center-block animated infinite rubberBand'>");
-      $(".container").append("<div class='row' id='restart'><h3 class='dropshadow marquee col-xs-10 col-xs-offset-1' role='button' id='restart-btn'>re-start!</h3></div>");
-      $("#restart-btn").click(function(event) {
-        location.reload();
-      });
+      $("#game-in-progress").hide();
+
+
+      $("#winner-name").text(player1.playerName);
+      $("#bacon").hide().fadeIn("slow");
+
 
       // Hide buttons if someone has won
       $("#roll-btn").hide();
       $("#pass-btn").hide();
 
     } else if (game.checkStatus() === player2) {
-      $(".container").last().fadeOut("slow");
-      $(".container").empty();
-      $(".container").append("<h1 class='text-center bacon-text animated shake swing infinite'>" + player2.playerName + " wins</h1>");
-      $(".container").append("<img src='img/bacon-dance.gif' class='img-responsive center-block animated infinite rubberBand'>");
-      $(".container").append("<div class='row' id='restart'><h3 class='dropshadow marquee col-xs-10 col-xs-offset-1' role='button' id='restart-btn'>re-start!</h3></div>");
-      $("#restart-btn").click(function(event) {
-        location.reload();
-      });
+      $("#game-in-progress").hide();
+
+      $("#winner-name").text(player2.playerName);
+      $("#bacon").hide().fadeIn("slow");
+
 
       // Hide buttons if someone has won
       $("#roll-btn").hide();

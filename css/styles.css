@@ -18,6 +18,14 @@ body {
   border-color: #D7BEA8;
 }
 
+.marquee-left {
+  float: left;
+}
+
+.marquee-right {
+  float: right;
+}
+
 .game {
   display: none;
 }
@@ -77,6 +85,11 @@ body {
 
 #dice {
   padding-bottom: 25px;
+}
+
+#bacon {
+  display: none;
+  opacity: 1.0;
 }
 
 
