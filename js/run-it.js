@@ -55,16 +55,6 @@ $(document).ready(function() {
     startGame();
   });
 
-
-
-
-
-
-
-
-
-
-
   var showCurrentPlayer = function() {
     if (game.currentPlayer === player1) {
       $("#player2").removeClass("animated bounce highlighted");
@@ -111,7 +101,40 @@ $(document).ready(function() {
     currentTurn = game.getNextTurn();
   };
 
+  var animateDice = function(diceNumber) {
+    $("#dice").empty();
 
+    var randomSides = [];
+    for (var i = 0; i < 3; i++) {
+      randomSides[i] = Math.floor(Math.random() * 6) + 1;
+    }
+
+    console.log("randomSides is " + randomSides);
+
+
+    $("#dice").empty();
+    $("#dice").append("<img class='center-block img-responsive' src='img/dice/" + randomSides[0] + ".svg'>");
+    $("#dice").hide().fadeIn();
+
+    // Set up three offset timers to display the random rolls
+    var time = 0;
+    for (var i = 1; i < 3; i++) {
+      time += 500;
+
+      // Show and animate three random sides before displaying this one
+      setTimeout(function() {
+        i--;
+
+        $("#dice").empty();
+        $("#dice").append("<img class='center-block img-responsive' src='img/dice/" + randomSides[i] + ".svg'>");
+        $("#dice").hide().fadeIn();
+      }, time);
+    }
+
+    $("#dice").empty();
+    // Show the real dice image for this roll
+    $("#dice").append("<img class='center-block img-responsive' src='img/dice/" + diceNumber + ".svg'>");
+  }
 
 
 
@@ -120,6 +143,9 @@ $(document).ready(function() {
 
     var diceNumber = currentTurn.roll();
     $("#roll").text(diceNumber);
+
+    animateDice(diceNumber);
+
     $("#current-score").text(currentTurn.currentScore);
 
     // If player rolled a 1, end the turn after 1 second.
@@ -133,6 +159,7 @@ $(document).ready(function() {
   // Pass button onClick handler
   $("#pass-btn").click(function(event) {
     currentTurn.pass();
+    $("#dice").empty();
     endTurn();
 
   });

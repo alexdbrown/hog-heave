@@ -11,6 +11,13 @@ h3 {
   margin: 0 auto;
 }*/
 
+.well {
+  /*background-color: #FFF7F8;*/
+  background-image: url(../img/bacon-texture.png);
+  opacity: 0.8;
+}
+
+
 
 #roll-btn {
 
@@ -24,6 +31,30 @@ h3 {
   background-color: pink;
 }
 
-/*.player-img {
-  width:
-}*/
+#dice {
+  padding-bottom: 25px;
+}
+
+body {
+  background: #DE6C83;
+  font-family: "Montserrat";
+}
+.navbar {
+    background: linear-gradient(to right, #D7BEA8, #DE6C83);
+    text-shadow: 2px 2px 2px #ffffff;
+    border-color: transparent;
+    border-width: 0px;
+}
+
+.navbar-brand {
+    padding: 5px 10px 5px 10px;
+    font-family: "Bangers";
+    font-size: 50px;
+
+}
+
+#pig-logo {
+    width: 40px;
+    height: 40px;
+    display: inline;
+}
