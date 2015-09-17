@@ -1,7 +1,18 @@
 $(document).ready(function() {
-  // var player1 = new Player("Porker Posey");
-  var player2 = new Player("Mrs. Piggy");
+  var player1, player2, game, currentTurn;
 
+  var player1Chosen = false;
+  var player2Chosen = false;
+
+  var startGame = function() {
+    // Game shouldn't start until both players have chosen a character
+    if (player1Chosen && player2Chosen) {
+      game = new Game(player1, player2);
+      currentTurn = game.getNextTurn();
+      showCurrentPlayer();
+      updateScores();
+    }
+  }
 
 
   // Choose player 1
@@ -16,9 +27,12 @@ $(document).ready(function() {
     $(this).addClass("center-block");
 
     // Get the id from this image and set the player to this id
-    var player1 = new Player($(this).attr('id'));
-
+    player1 = new Player($(this).attr('id'));
     $("#player1-name").text(player1.playerName);
+
+    // Check if we should start the game
+    player1Chosen = true;
+    startGame();
   });
 
   //Choose player 2
@@ -33,19 +47,23 @@ $(document).ready(function() {
     $(this).addClass("center-block");
 
     // Get the id from this image and set the player to this id
-    var player2 = new Player($(this).attr('id'));
-
+    player2 = new Player($(this).attr('id'));
     $("#player2-name").text(player2.playerName);
+
+    // Check if we should start the game
+    player2Chosen = true;
+    startGame();
   });
 
 
 
-  // Game shouldn't start until both players have chosen a character
-  // var game = new Game(player1, player2);
 
 
 
-  var currentTurn = game.getNextTurn();
+
+
+
+
 
   var showCurrentPlayer = function() {
     if (game.currentPlayer === player1) {
@@ -58,9 +76,9 @@ $(document).ready(function() {
   };
 
   var updateScores = function() {
-    console.log("player 1 score is " + player1.totalScore);
-    $("#player1-score").text(player1.totalScore);
-    $("#player2-score").text(player2.totalScore);
+    // Don't display colon until we update scores
+    $("#player1-score").text(": " + player1.totalScore);
+    $("#player2-score").text(": " + player2.totalScore);
   }
 
   var checkStatus = function() {
@@ -94,8 +112,7 @@ $(document).ready(function() {
   };
 
 
-  showCurrentPlayer();
-  updateScores();
+
 
 
   // Roll button onClick handler
