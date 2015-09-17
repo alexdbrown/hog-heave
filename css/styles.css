@@ -1,15 +1,20 @@
-/*.pig-picker {
-  width: 64px;
-  height: 64px;
-}*/
-
-h3 {
-  text-align: center;
+body {
+  background: #DE6C83;
+  font-family: "Montserrat";
+  padding-top: 70px;
 }
-/*
+
+.marquee {
+  text-align: center;
+  font-family: "Bangers";
+  border-radius: 1px;
+  border-style: dotted;
+  border-color: #D7BEA8;
+}
+
 .game {
-  margin: 0 auto;
-}*/
+  display: none;
+}
 
 .well {
   /*background-color: #FFF7F8;*/
@@ -17,7 +22,27 @@ h3 {
   opacity: 0.8;
 }
 
+.dropshadow {
+  height: auto;
+  -webkit-box-shadow: 20px 20px 42px -4px rgba(116,66,83,1);
+  -moz-box-shadow: 20px 20px 42px -4px rgba(116,66,83,1);
+  box-shadow: 20px 20px 42px -4px rgba(116,66,83,1);
+}
 
+.dice-img {
+  width: 100px;
+  height: 100px;
+}
+
+.pig-img {
+  animation-iteration-count: 2;
+  width: 150px;
+  height: 150px;
+}
+
+#current-score {
+  text-shadow: 2px 2px 2px #ffffff;
+}
 
 #roll-btn {
 
@@ -35,10 +60,7 @@ h3 {
   padding-bottom: 25px;
 }
 
-body {
-  background: #DE6C83;
-  font-family: "Montserrat";
-}
+
 .navbar {
     background: linear-gradient(to right, #D7BEA8, #DE6C83);
     text-shadow: 2px 2px 2px #ffffff;

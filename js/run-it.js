@@ -8,6 +8,9 @@ $(document).ready(function() {
     // Game shouldn't start until both players have chosen a character
     if (player1Chosen && player2Chosen) {
       game = new Game(player1, player2);
+
+      setTimeout(function() { $(".game").hide().fadeIn("slow"); }, 1000);
+
       currentTurn = game.getNextTurn();
       showCurrentPlayer();
       updateScores();
@@ -99,41 +102,20 @@ $(document).ready(function() {
     game.switchPlayer();
     showCurrentPlayer();
     currentTurn = game.getNextTurn();
+
+    // Make sure buttons are showing for the next turn
+    $("#pass-btn").show();
+    $("#roll-btn").show();
   };
 
   var animateDice = function(diceNumber) {
     $("#dice").empty();
 
-    var randomSides = [];
-    for (var i = 0; i < 3; i++) {
-      randomSides[i] = Math.floor(Math.random() * 6) + 1;
+    if (diceNumber === 1) {
+      $("#dice").append("<img class='center-block img-responsive pig-img animated tada' src='img/dirty-pig.jpg'>");
+    } else {
+      $("#dice").append("<img class='center-block img-responsive dice-img animated flip' src='img/dice/" + diceNumber + ".svg'>");
     }
-
-    console.log("randomSides is " + randomSides);
-
-
-    $("#dice").empty();
-    $("#dice").append("<img class='center-block img-responsive' src='img/dice/" + randomSides[0] + ".svg'>");
-    $("#dice").hide().fadeIn();
-
-    // Set up three offset timers to display the random rolls
-    var time = 0;
-    for (var i = 1; i < 3; i++) {
-      time += 500;
-
-      // Show and animate three random sides before displaying this one
-      setTimeout(function() {
-        i--;
-
-        $("#dice").empty();
-        $("#dice").append("<img class='center-block img-responsive' src='img/dice/" + randomSides[i] + ".svg'>");
-        $("#dice").hide().fadeIn();
-      }, time);
-    }
-
-    $("#dice").empty();
-    // Show the real dice image for this roll
-    $("#dice").append("<img class='center-block img-responsive' src='img/dice/" + diceNumber + ".svg'>");
   }
 
 
@@ -142,15 +124,16 @@ $(document).ready(function() {
   $("#roll-btn").click(function(event) {
 
     var diceNumber = currentTurn.roll();
-    $("#roll").text(diceNumber);
-
     animateDice(diceNumber);
 
-    $("#current-score").text(currentTurn.currentScore);
 
-    // If player rolled a 1, end the turn after 1 second.
+    $("#current-score").text("turn score: " + currentTurn.currentScore);
+
+    // If player rolled a 1, end the turn after 1 second and hide buttons.
     if (diceNumber === 1) {
-      $("#current-score").text("Oops ya rolled a 1, turn over.");
+      $("#current-score").text("you dirty pig! you rolled in the mud...");
+      $("#pass-btn").hide();
+      $("#roll-btn").hide();
       setTimeout(function() { endTurn() }, 2000);
     }
 
@@ -162,6 +145,11 @@ $(document).ready(function() {
     $("#dice").empty();
     endTurn();
 
+  });
+
+  // Re-start button onClick handler
+  $("#restart-btn").click(function(event) {
+    location.reload();
   });
 
 });

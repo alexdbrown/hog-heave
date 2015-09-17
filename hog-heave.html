@@ -28,13 +28,13 @@
     <div class="container">
       <!-- put floating nav here -->
 
-      <h3>Pick yer Piggy</h3>
+      <h3 class="dropshadow marquee">Pick yer Piggy!</h3>
 
       <div class="row">
         <div class="col-xs-6">
 
           <!-- piggy picker 1-->
-          <div class="well" id="picker1-well">
+          <div class="well dropshadow" id="picker1-well">
             <div class="row">
               <img src="img/piglet.gif" class="img-responsive pig-picker btn col-sm-4" id="piglet">
               <img src="img/three-pigs.png" class="img-responsive pig-picker btn col-sm-4" id="three-pigs">
@@ -52,7 +52,7 @@
 
         <div class="col-xs-6">
           <!-- piggy picker 2 -->
-          <div class="well" id="picker2-well">
+          <div class="well dropshadow" id="picker2-well">
             <div class="row">
               <img src="img/piglet.gif" class="img-responsive pig-picker btn col-sm-4" id="piglet">
               <img src="img/three-pigs.png" class="img-responsive pig-picker btn col-sm-4" id="three-pigs">
@@ -72,7 +72,7 @@
       <div class="row">
         <div class="game col-xs-10 col-xs-offset-1">
           <!-- game here -->
-          <div class="well">
+          <div class="well dropshadow">
             <div class="row">
               <div class="col-xs-3" id="player1">
                 <span id="player1-name"></span><span id="player1-score"></span>
@@ -83,8 +83,7 @@
             </div>
             <div class="row">
               <div class="col-xs-6 col-xs-offset-3 text-center">
-                Current Score: <span id="current-score"></span>
-                <p id="roll"></p>
+                <h3><span id="current-score"></span></h3>
               </div>
             </div>
             <div class="row">
@@ -95,11 +94,15 @@
               </div>
             </div>
             <div class="row">
-              <button class="col-xs-3 col-xs-offset-2 btn" id="roll-btn">Roll</button>
-              <button class="col-xs-3 col-xs-offset-2 btn" id="pass-btn">Pass</button>
+              <button class="col-xs-3 col-xs-offset-2 btn" id="roll-btn">roll</button>
+              <button class="col-xs-3 col-xs-offset-2 btn" id="pass-btn">pass</button>
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="row">
+        <h3 class="dropshadow marquee col-xs-10 col-xs-offset-1" role="button" id="restart-btn">re-start!</h3>
       </div>
 
     </div>
