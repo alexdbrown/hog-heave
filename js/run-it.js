@@ -1,7 +1,49 @@
 $(document).ready(function() {
-  var player1 = new Player("Porker Posey");
+  // var player1 = new Player("Porker Posey");
   var player2 = new Player("Mrs. Piggy");
-  var game = new Game(player1, player2);
+
+
+
+  // Choose player 1
+  $("#picker1-well img").click(function(event) {
+    // Clear the other pig options and add this image to the well w/ animation
+    $("#picker1-well").empty();
+    $("#picker1-well").append($(this));
+    $(this).addClass("animated rotateIn").hide().fadeIn();
+
+    // Center the new image and make it fill the whole well
+    $(this).removeClass("col-sm-4 btn");
+    $(this).addClass("center-block");
+
+    // Get the id from this image and set the player to this id
+    var player1 = new Player($(this).attr('id'));
+
+    $("#player1-name").text(player1.playerName);
+  });
+
+  //Choose player 2
+  $("#picker2-well img").click(function(event) {
+    // Clear the other pig options and add this image to the well w/ animation
+    $("#picker2-well").empty();
+    $("#picker2-well").append($(this));
+    $(this).addClass("animated rotateIn").hide().fadeIn();
+
+    // Center the new image and make it fill the whole well
+    $(this).removeClass("col-sm-4 btn");
+    $(this).addClass("center-block");
+
+    // Get the id from this image and set the player to this id
+    var player2 = new Player($(this).attr('id'));
+
+    $("#player2-name").text(player2.playerName);
+  });
+
+
+
+  // Game shouldn't start until both players have chosen a character
+  // var game = new Game(player1, player2);
+
+
 
   var currentTurn = game.getNextTurn();
 
