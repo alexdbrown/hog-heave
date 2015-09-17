@@ -1,4 +1,7 @@
 $(document).ready(function() {
+
+  $("body").hide().fadeIn("slow");
+
   var player1, player2, game, currentTurn;
 
   var player1Chosen = false;

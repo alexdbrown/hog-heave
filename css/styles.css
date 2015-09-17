@@ -1,7 +1,13 @@
 body {
-  background: #DE6C83;
+  /*background: #F4A4B9; */
+  /*background: #DE6C83;*/
+  background: #F4A4A4;
   font-family: "Montserrat";
   padding-top: 70px;
+}
+
+.pig-picker {
+  border-radius: 30%;
 }
 
 .marquee {
@@ -21,6 +27,7 @@ body {
   background-image: url(../img/bacon-texture.png);
   opacity: 0.8;
 }
+
 
 .dropshadow {
   height: auto;
@@ -44,13 +51,16 @@ body {
   text-shadow: 2px 2px 2px #ffffff;
 }
 
-#roll-btn {
-
+#roll-btn, #pass-btn  {
+  background-color: #F3D9DC;
 }
 
-#pass-btn {
 
+.btn:focus, .btn:active:focus, .btn.active:focus {
+  outline: 0 none;
 }
+
+
 
 .highlighted {
   background-color: pink;
@@ -62,7 +72,8 @@ body {
 
 
 .navbar {
-    background: linear-gradient(to right, #D7BEA8, #DE6C83);
+    /*background: linear-gradient(to right, #D7BEA8, #DE6C83);*/
+    background: linear-gradient(to right, #DFCBB9, #DE6C83);
     text-shadow: 2px 2px 2px #ffffff;
     border-color: transparent;
     border-width: 0px;
